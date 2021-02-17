@@ -9,6 +9,7 @@
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">Faktura dodana!</h4>
                 <p>{{ session()->get('message') }}</p>
+                <button type="button" class="btn-success" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
 

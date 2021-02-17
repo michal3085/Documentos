@@ -20,7 +20,7 @@ class InvoicesController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request); podglad tego co przychodzi z rzadaniem
+        // dd($request); podglad tego co przychodzi z zadaniem
         $invoice = new Invoice();
 
         $invoice->number = $request->number;
@@ -29,6 +29,7 @@ class InvoicesController extends Controller
 
         $invoice->save();
 
+        // Parametr ->with() - dodaje zmienna sesyjna message o podanej dalej tresci.
         return redirect()->route('invoices.index')->with('message', 'Faktura dodana poprawnie');
     }
 }
