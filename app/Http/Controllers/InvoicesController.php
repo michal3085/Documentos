@@ -18,6 +18,13 @@ class InvoicesController extends Controller
         return view('invoices.create');
     }
 
+    public function edit($id)
+    {
+        $invoice = Invoice::find($id);
+
+        return view('invoices.edit', ['invoice' => $invoice]);
+    }
+
     public function store(Request $request)
     {
         // dd($request); podglad tego co przychodzi z zadaniem
@@ -31,5 +38,26 @@ class InvoicesController extends Controller
 
         // Parametr ->with() - dodaje zmienna sesyjna message o podanej dalej tresci.
         return redirect()->route('invoices.index')->with('message', 'Faktura dodana poprawnie');
+    }
+
+    public function update($id, Request $request)
+    {
+
+        $invoice = Invoice::find($id);
+
+        $invoice->number = $request->number;
+        $invoice->date = $request->date;
+        $invoice->total = $request->total;
+
+        $invoice->save();
+
+        return redirect()->route('invoices.index')->with('message', 'Faktura została poprawnie zmieniona');
+    }
+
+    public function delete($id)
+    {
+        $invoice = Invoice::destroy($id);
+
+        return redirect()->route('invoices.index')->with('message', 'Faktura została usunieta');
     }
 }
