@@ -50,6 +50,7 @@
                 </tbody>
             </table>
             <!-- End of the table -->
+           <a href="{{ route('invoices.create') }}" class="btn btn-primary btn-lg btn-block">Dodaj nową fakturę</a>
         </div>
     </section>
     @endsection
