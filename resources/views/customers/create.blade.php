@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                <form action="{{ route('customers.store', ['id' => $customer->id]) }}" method="POST" id="contactForm" name="sentMessage" novalidate="novalidate">
+                <form action="{{ route('customers.store') }}" method="POST" id="contactForm" name="sentMessage" novalidate="novalidate">
                     {{ csrf_field() }}
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
