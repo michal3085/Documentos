@@ -66,7 +66,9 @@ class CustomersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = Customer::find($id);
+
+        return view('customers.edit', compact('customer'));
     }
 
     /**
@@ -78,7 +80,14 @@ class CustomersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $customer = Customer::find($id);
+
+        $customer->name = $request->name;
+        $customer->address = $request->address;
+        $customer->nip = $request->nip;
+
+        $customer->save();
+        return redirect()->route('customers.index')->with('message', 'Zauktualizowano dane klienta');
     }
 
     /**
@@ -89,6 +98,8 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Customer::destroy($id);
+
+        return redirect()->route('customers.index')->with('message', 'Klient został usunięty.');
     }
 }
