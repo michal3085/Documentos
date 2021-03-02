@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class InvoicesController extends Controller
 {
     public function index()
     {
-        $invoices = Invoice::all();  // Pobieranie danych z bazy.
+        $invoices = Invoice::with('customer')->get();  // Pobieranie danych z bazy.
         return view('invoices.index', ['invoices' => $invoices]);
     }
 
@@ -33,6 +34,7 @@ class InvoicesController extends Controller
         $invoice->number = $request->number;
         $invoice->date = $request->date;
         $invoice->total = $request->total;
+        $invoice->customer_id = $request->customer;
 
         $invoice->save();
 

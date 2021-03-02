@@ -27,6 +27,7 @@
                     <th scope="col">Numer Faktury</th>
                     <th scope="col">Data wystawienia</th>
                     <th scope="col">Kwota</th>
+                    <th scope="col">Klient</th>
                     <th scope="col">Edycja</th>
                     <th scope="col">Usuń</th>
                 </tr>
@@ -38,6 +39,7 @@
                         <td>{{ $invoice->number }}</td>
                         <td>{{ $invoice->date }}</td>
                         <td>{{ $invoice->total }}</td>
+                        <td>{{ $invoice->customer->name }}</td>
                         <td><a href="{{ route('invoices.edit', ['id' => $invoice->id]) }}" class="btn btn-outline-primary">Edytuj</a></td>
                         <form method="POST" action="{{ route('invoices.delete', ['id' => $invoice->id]) }}">
                             @csrf
