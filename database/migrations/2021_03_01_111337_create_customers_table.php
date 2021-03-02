@@ -17,7 +17,7 @@ class CreateCustomersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->unsignedInteger('nip');
+            $table->unsignedBigInteger('nip');
             $table->timestamps();
         });
     }
