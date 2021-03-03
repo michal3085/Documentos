@@ -35,7 +35,7 @@
                     @foreach($customers as $customer)
                     <tr>
                         <th scope="row">{{ $customer->id }}</th>
-                        <td>{{ $customer->name }}</td>
+                        <td><a href="{{ route('customers.show', ['customer' => $customer->id]) }}">{{ $customer->name }}</a></td>
                         <td>{{ $customer->address }}</td>
                         <td>{{ $customer->nip }}</td>
                         <td><a href="{{ route('customers.edit', ['customer' => $customer->id]) }}" class="btn btn-outline-primary">Edytuj</a></td>
@@ -44,7 +44,6 @@
                             @method('delete')
                             <td><button type="submit" class="btn btn-danger">Usuń</button></td>
                         </form>
-
                     </tr>
                     @endforeach
                 </tbody>
